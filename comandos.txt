@@ -1,0 +1,9 @@
+Criar um ambiente virtual
+-> python3 -m venv venv
+
+Ativar um ambiente virtual Linux
+-> source venv/bin/activate
+
+Intalar as dependências do projeto
+-> pip install -r requirements.txt
+
