@@ -7,3 +7,6 @@ Ativar um ambiente virtual Linux
 Intalar as dependências do projeto
 -> pip install -r requirements.txt
 
+Criando um projeto Django
+->  python -m django startproject core .
+
