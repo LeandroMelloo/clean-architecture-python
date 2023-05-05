@@ -1,12 +1,18 @@
 Criar um ambiente virtual
 -> python3 -m venv venv
 
-Ativar um ambiente virtual Linux
+Ativar um ambiente virtual no Linux
 -> source venv/bin/activate
 
-Intalar as dependências do projeto
+Instalar as dependências do projeto
 -> pip install -r requirements.txt
 
-Criando um projeto Django
+Criando um projeto Django no Linux
 ->  python -m django startproject core .
+
+Rodando o servidor Django
+-> python manage.py runserver
+
+Rodando as migrates do projeto Django
+-> python manage.py migrate
 

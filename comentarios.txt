@@ -1,0 +1,20 @@
+O que é Clean Architecture ou Arquitetura Limpa
+
+-> criar componentes com baixo acoplamento, com alta coesão e facíl de testar.
+-> cada camada tem sua responsabilidade bem definida e obrigações especificas.
+
+DDD - Domain Driving Design
+
+-> DDD vem no entendimento do seu dominio
+-> A abordagem do DDD é base para construção de sistemas com microsserviços. 
+Busca dividir as áreas de negócios e cada uma dessas áreas deve ser especializada em uma atividade, 
+emprega a restrição por escopo de cada uma dessas áreas que não devem influenciar as demais, 
+é preciso haver harmonia na execução.
+Em suma trata de uma metodologia que busca isolar regras de negócios em camadas de domínios, 
+subdomínios, para manter a integridade de que mitigue as causas de influências externas ao escopo da camada.
+
+São três os pilares que norteiam a metodologia DDD:
+
+-> Ubiquitous Language (Linguagem ubiqua)
+-> Bounded Context (Contexto limitado)
+-> Context Map (Mapa de contexto)
