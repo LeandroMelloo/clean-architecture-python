@@ -25,8 +25,7 @@ class Booking(object):
 
     def is_valid(self):
         if self.checkin > self.checkout:
-            raise CheckinDateCannotBeAfterCheckoutDate("Checkin cannot be after checkout")
+            raise CheckinDateCannotBeAfterCheckoutDate("Checkin cannot be after Checkout")
         elif self.customer:
             raise CustomerCannotBeBlank("Customer is a required information")
-
         return True
