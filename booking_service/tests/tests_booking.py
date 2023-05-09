@@ -34,7 +34,7 @@ class BookingTests(unittest.TestCase):
         self.assertRaises(CheckinDateCannotBeAfterCheckoutDate, booking.is_valid)
     
     def test_create(self):
-        checkin = datetime.utcnow()
+        checkin = datetime.today()
         checkout = datetime.today()
         customer = Customer()
         booking_dto = BookingDto(checkin=checkin, checkout=checkout, customer=customer)
