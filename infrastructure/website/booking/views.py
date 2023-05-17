@@ -15,8 +15,8 @@ def create_new(request):
     age = int(request.POST.get('age'))
     document = request.POST.get('document')
     email = request.POST.get('email')
-    customer_dto = CustomerDto(name, age, document, email)
 
+    customer_dto = CustomerDto(name, age, document, email)
     dto = BookingDto(checkin, checkout, customer_dto)
     response = BookingService().create_new_booking(dto)
 

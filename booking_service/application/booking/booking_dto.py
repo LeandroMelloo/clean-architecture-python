@@ -16,4 +16,4 @@ class BookingDto(object):
         self.customer = customer
 
     def to_domain(self):
-        return Booking(self.checkin, self.checkout, self.customer)
+        return Booking(self.checkin, self.checkout, self.customer.to_domain())
