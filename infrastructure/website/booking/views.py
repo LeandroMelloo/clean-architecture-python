@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from datetime import datetime, timedelta
+from datetime import datetime
 from booking_service.application.booking.booking_services import BookingService
 from booking_service.application.booking.booking_dto import BookingDto
 from booking_service.application.customers.customer_dto import CustomerDto
