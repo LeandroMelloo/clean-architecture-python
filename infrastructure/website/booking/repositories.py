@@ -1,7 +1,7 @@
 from booking_service.application.booking.booking_storage import BookingStorage
 from booking_service.application.booking.booking_dto import BookingDto
 from booking_service.application.customers.customer_dto import CustomerDto
-from booking_service.domain.booking.enums import BookingStatuses
+from booking_service.domain.booking.enums import BookingStatus
 from .models import Customer, Booking
 from django.db import transaction
 
@@ -52,7 +52,7 @@ class BookingRepository(BookingStorage):
         return bookings_dto
 
     def get_filtered_bookings(self):
-        bookings = Booking.objects.exclude(status=BookingStatuses.CANCELED.name)
+        bookings = Booking.objects.exclude(status=BookingStatus.CANCELED.name)
         bookings_dto = []
         for booking in bookings:
             bookings_dto.append(self._model_to_dto(booking))

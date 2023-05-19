@@ -13,7 +13,7 @@ class ErrorCodes(Enum):
 class SuccessCodes(Enum):
     SUCCESS = 'Success'
 
-class BookingStatuses(Enum):
+class BookingStatus(Enum):
     OPEN = 0
     RESERVED = 1 
     FINISHED = 2
