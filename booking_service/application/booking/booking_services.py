@@ -9,7 +9,7 @@ from booking_service.domain.booking.enums import *
 class BookingService(object):
     storage: BookingStorage
 
-    def __init__(self, storage: BookingDto):
+    def __init__(self, storage: BookingStorage):
         self.storage = storage
 
     def create_new_booking(self, bookingDto: BookingDto):
