@@ -1,12 +1,11 @@
 from datetime import datetime
 from booking_service.domain.booking.entities import Booking
-from booking_service.domain.customers.entities import Customer
 from booking_service.application.customers.customer_dto import CustomerDto
 
 class BookingDto(object):
     checkin: datetime
     checkout: datetime
-    customer: Customer
+    customer: CustomerDto
 
     def __init__(self, checkin: datetime, checkout: datetime, customer: CustomerDto):
         self.checkin = checkin
@@ -14,4 +13,4 @@ class BookingDto(object):
         self.customer = customer
 
     def to_domain(self):
-        return Booking(self.checkin, self.checkout, self.customer)
+        return Booking(self.checkin, self.checkout, self.customer.to_domain())
