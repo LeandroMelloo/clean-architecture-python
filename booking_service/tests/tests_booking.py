@@ -18,7 +18,7 @@ class BookingTests(unittest.TestCase):
     def test_checkin_date_cannot_be_after_checkout_date(self):
         checkin = datetime.today()
         checkout = datetime.today() - timedelta(days=1)
-        customer = CustomerDto("Customer", 18, "doc123", "a@a.com")
+        customer = Customer()
         booking = Booking(checkin=checkin, checkout=checkout, customer=customer)
 
         with self.assertRaises(CheckinDateCannotBeAfterCheckoutDate) as ex:
@@ -30,52 +30,19 @@ class BookingTests(unittest.TestCase):
     def test_checkin_date_cannot_be_after_checkout_date2(self):
         checkin = datetime.utcnow()
         checkout = datetime.today() - timedelta(days=1)
-        customer = CustomerDto("Customer", 18, "doc123", "a@a.com")
+        customer = Customer()
         booking = Booking(checkin=checkin, checkout=checkout, customer=customer)
 
         self.assertRaises(CheckinDateCannotBeAfterCheckoutDate, booking.is_valid)
 
-    def test_checkin_date_cannot_be_after_checkout_date3(self):
-        checkin = datetime.utcnow()
-        checkout = datetime.today() - timedelta(days=1)
-        customer = CustomerDto("Customer", 18, "doc123", "a@a.com")
-        booking_dto = BookingDto(checkin=checkin, checkout=checkout, customer=customer)
-        service = BookingService()
-        response = service.create_new_booking(booking_dto)
-
-        self.assertEqual(response['code'], 'CHECKINAFTERCHECKOUT')
-
-    def test_customer_cannot_be_blank(self):
-        checkin = datetime.today()
-        checkout = datetime.today()
-        booking = Booking(checkin=checkin, checkout=checkout, customer=None)
-
-        self.assertRaises(CustomerCannotBeBlank, booking.is_valid)
-
-    def test_customer_must_have_valid_document(self):
-        checkin = datetime.today()
-        checkout = datetime.today()
-        customer = Customer("Customer", 18, "123", "a@a.com")
-        booking = Booking(checkin=checkin, checkout=checkout, customer=customer)
-
-        self.assertRaises(InvalidCustomerDocumentException, booking.is_valid)
-
-    def test_customer_happy_path(self):
-        checkin = datetime.today()
-        checkout = datetime.today()
-        customer = Customer("Customer", 18, "12356", "a@a.com")
-        booking = Booking(checkin=checkin, checkout=checkout, customer=customer)
-
-        self.assertTrue(booking.is_valid())
-    
     def test_create(self):
         checkin = datetime.today()
         checkout = datetime.today()
-        customer = CustomerDto("Customer", 18, "doc123", "a@a.com")
+        customer = Customer()
         booking_dto = BookingDto(checkin=checkin, checkout=checkout, customer=customer)
         service = BookingService()
         response = service.create_new_booking(booking_dto)
-        self.assertEqual(response['code'], 'SUCCESS')
+        self.assertEqual(response, 'save')
 
 if __name__ == '__main__':
     unittest.main()

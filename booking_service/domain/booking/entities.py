@@ -1,21 +1,12 @@
-from enum import Enum
-from booking_service.domain.booking.enums import BookingStatus
 from .exceptions import CheckinDateCannotBeAfterCheckoutDate, CustomerCannotBeBlank
 from datetime import datetime
 from booking_service.domain.customers.entities import Customer
 from booking_service.domain.rooms.entities import Room
 
-class BookingStatus(Enum):
-    OPEN = 0
-    RESERVED = 1
-    FINISHED = 2
-    CANCELED = 3
-
 class Booking(object):
     checkin: datetime
     checkout: datetime
     customer: Customer
-    status: BookingStatus
     profit_margin: float
     room: Room
 
@@ -23,18 +14,14 @@ class Booking(object):
         self.checkin = checkin
         self.checkout = checkout
         self.customer = customer
-        self.status = BookingStatus.OPEN
 
     def create_booking(self):
         self.is_valid()
-        self.status = BookingStatus.RESERVED
 
     def is_valid(self):
         if self.checkin > self.checkout:
             raise CheckinDateCannotBeAfterCheckoutDate("Checkin cannot be after Checkout")
         elif not self.customer:
             raise CustomerCannotBeBlank("Customer is a required information")
-        
-        self.customer.is_valid()
         
         return True
