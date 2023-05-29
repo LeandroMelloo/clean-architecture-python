@@ -19,3 +19,6 @@ Rodando as migrates do projeto Django
 Comando para criar um superuser
 -> python manage.py createsuperuser
 
+Comando para testar os cenarios de testes
+-> python -m unittest
+

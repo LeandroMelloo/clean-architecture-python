@@ -23,6 +23,24 @@ class BookingTests(unittest.TestCase):
         response = service.create_new_booking(booking_dto)
         self.assertEqual(response['code'], 'CHECKINAFTERCHECKOUT')
 
+    def test_customer_should_older_than_18(self):
+        checkin = datetime.today()
+        checkout = datetime.today()
+        customer = CustomerDto('Leandro', 17, 'doctest123', 'leandroteste@gmail.com')
+        booking_dto = BookingDto(checkin=checkin, checkout=checkout, customer=customer)
+        service = BookingService()
+        response = service.create_new_booking(booking_dto)
+        self.assertEqual(response['code'], 'CUSTOMERSHOULDBEOLDERTHAN18')
+
+    def test_customer_invalid_document(self):
+        checkin = datetime.today()
+        checkout = datetime.today()
+        customer = CustomerDto('Leandro', 37, 'doct', 'leandroteste@gmail.com')
+        booking_dto = BookingDto(checkin=checkin, checkout=checkout, customer=customer)
+        service = BookingService()
+        response = service.create_new_booking(booking_dto)
+        self.assertEqual(response['code'], 'INVALIDCUSTOMERDOCUMENT')
+
     def test_create(self):
         checkin = datetime.today()
         checkout = datetime.today()
