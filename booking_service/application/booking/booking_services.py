@@ -2,15 +2,12 @@ from booking_service.domain.booking.exceptions import CheckinDateCannotBeAfterCh
 from .booking_dto import BookingDto
 from booking_service.domain.booking.enums import ErrorCodes
 
-
-"""Use Cases"""
 class BookingService(object):
     def create_new_booking(self, bookingDto: BookingDto):
         domain_object = bookingDto.to_domain()
 
         try:
             if domain_object.is_valid():
-                print('aqui...')
                 return 'save'
         except CheckinDateCannotBeAfterCheckoutDate as e:
             return {'message': e.message, 'code': ErrorCodes.CHECKINAFTERCHECKOUT}
