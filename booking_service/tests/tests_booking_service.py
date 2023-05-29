@@ -3,8 +3,6 @@ from datetime import datetime, timedelta
 import sys
 sys.path.append("..")
 sys.path.append("../../")
-from booking_service.domain.booking.entities import Booking
-from booking_service.domain.customers.entities import Customer
 from booking_service.domain.booking.exceptions import *
 from booking_service.domain.customers.exceptions import *
 from booking_service.application.booking.booking_services import BookingService
