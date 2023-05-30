@@ -1,0 +1,26 @@
+- signup endpoint
+  -> url: /api/users
+  -> method: POST
+  -> body: 
+  {
+    "name": "Leandro Teste",
+    "email": "leandro@teste.com",
+    "password": "test123456TEST&"
+  }
+  -> resposta: 
+  status_code: 201
+  {
+    "name": "Leandro Teste",
+    "email": "leandro@teste.com"
+  }
+
+- signin endpoint
+  -> url: /api/users/signin
+  -> method: POST
+  -> body: 
+  {
+    "email": "leandro@teste.com",
+    "password": "test123456TEST&"
+  }
+  -> resposta:
+  status_code: 200
