@@ -1,6 +1,7 @@
-from collections import namedtuple
+
+from src.domain.models import Users
 from src.infra.config import DBConnectionHandler
-from src.infra.entities.users import Users
+from src.infra.entities.users import Users as UsersModel
 
 class UserRepository:
     ''' Class to manage User Repository '''
@@ -14,16 +15,14 @@ class UserRepository:
             :return - tuple with new user inserted
         '''
 
-        InsertData = namedtuple('Users', 'id name, password')
-
         # with -> gerenciador de contexto
         with DBConnectionHandler() as db_connection:
             try:
-                new_user = Users(name=name, password=password)
+                new_user = UsersModel(name=name, password=password)
                 db_connection.session.add(new_user)
                 db_connection.session.commit()
 
-                return InsertData(id=new_user.id, name=new_user.name, password=new_user.password)
+                return Users(id=new_user.id, name=new_user.name, password=new_user.password)
             except:
                 db_connection.session.rollback()
                 raise
