@@ -4,6 +4,9 @@ Criar um ambiente virtual
 Ativar um ambiente virtual no Linux
 -> source venv/bin/activate
 
+Ativar um ambiente virtual no Windows
+->  .\venv\Scripts\activate
+
 Instalar as dependências do projeto
 -> pip install -r requirements.txt
 
@@ -21,4 +24,7 @@ Comando para criar um superuser
 
 Comando para testar os cenarios de testes
 -> python -m unittest
+
+Comando para gerar um arquivo pylint
+-> pylint --generate-rcfile > .pylintrc
 
