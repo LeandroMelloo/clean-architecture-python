@@ -1,2 +1,2 @@
 def start():
-    print('Ola mundo')
+    print('Ola mundo!')
