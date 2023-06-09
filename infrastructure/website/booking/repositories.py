@@ -1,7 +1,7 @@
 from booking_service.application.booking.booking_dto import BookingDto
 from booking_service.application.booking.booking_storage import BookingStorage
 from booking_service.application.customers.customer_dto import CustomerDto
-from .models import Booking, Customer
+from booking.models import Booking, Customer
 from django.db import transaction
 
 class BookingRepository(BookingStorage):

@@ -14,7 +14,7 @@ class BookingService(object):
         booking_aggregate = bookingDto.to_domain()
 
         try:
-            booking_aggregate.create_booking()
+            booking_aggregate.close_booking()
             final_dto = bookingDto.to_dto(booking_aggregate)
             self.storage.save_booking(final_dto)
             return {'message': SuccessCodes.SUCCESS.value, 'code': SuccessCodes.SUCCESS.name}
@@ -26,7 +26,8 @@ class BookingService(object):
             return {'message': ErrorCodes.CUSTOMERSHOULDBEOLDERTHAN18.value, 'code': ErrorCodes.CUSTOMERSHOULDBEOLDERTHAN18.name}
         except InvalidCustomerDocumentException:
             return {'message': ErrorCodes.INVALIDCUSTOMERDOCUMENT.value, 'code': ErrorCodes.INVALIDCUSTOMERDOCUMENT.name}
-        except Exception:
+        except Exception as e:
+            print(e)
             return {'message': ErrorCodes.UNDEFINED.value, 'code': ErrorCodes.UNDEFINED.name}
         
         
