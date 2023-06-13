@@ -1,7 +1,11 @@
-from .exceptions import CheckinDateCannotBeAfterCheckoutDate, CustomerCannotBeBlank
+from .exceptions import (
+    CheckinDateCannotBeAfterCheckoutDate,
+    CustomerCannotBeBlank
+)
 from datetime import datetime
-from booking_service.domain.customers.entities import Customer
-from booking_service.domain.rooms.entities import Room
+from service.domain.customers.entities import Customer
+from service.domain.rooms.entities import Room
+
 
 class Booking(object):
     checkin: datetime
@@ -10,7 +14,11 @@ class Booking(object):
     profit_margin: float
     room: Room
 
-    def __init__(self, checkin: datetime, checkout: datetime, customer: Customer):
+    def __init__(
+            self,
+            checkin: datetime,
+            checkout: datetime,
+            customer: Customer):
         self.checkin = checkin
         self.checkout = checkout
         self.customer = customer
@@ -20,10 +28,11 @@ class Booking(object):
 
     def is_valid(self):
         if self.checkin > self.checkout:
-            raise CheckinDateCannotBeAfterCheckoutDate("Checkin cannot be after Checkout")
+            raise CheckinDateCannotBeAfterCheckoutDate(
+                "Checkin cannot be after Checkout"
+            )
         elif not self.customer:
             raise CustomerCannotBeBlank("Customer is a required information")
-        
         self.customer.is_valid()
-        
+
         return True

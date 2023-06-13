@@ -1,4 +1,7 @@
-from .exceptions import *
+from .exceptions import (
+    CustomerShouldBeOlderThan18,
+    InvalidCustomerDocumentException
+)
 
 
 class Customer(object):
@@ -15,8 +18,10 @@ class Customer(object):
 
     def is_valid(self):
         if len(self.document) < 5:
-            raise InvalidCustomerDocumentException('Invalid document number')
+            raise InvalidCustomerDocumentException("Invalid document number")
         elif self.age < 18:
-            raise CustomerShouldBeOlderThan18('Customer should be older than 18')
-        
+            raise CustomerShouldBeOlderThan18(
+                "Customer should be older than 18"
+            )
+
         return True
